@@ -1,8 +1,13 @@
-# modify-package
+# amend-package
+
+> [!CAUTION]
+> Modify package is not recommended. Do not use this way unless there is no other solution and you known there is no risk in your scenario.
 
 Modify npm installed packages.
 + Modify package.json.
 + Add sub package.json.
+
+amend-package has been tested in npm v8+, pnpm v8, yarn v1.x, node v16+.
 
 ## Usage
 

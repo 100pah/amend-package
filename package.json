@@ -1,6 +1,6 @@
 {
   "name": "amend-package",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Modify npm installed packages.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,9 @@
   "author": "",
   "license": "ISC",
   "main": "lib/amend-package.cjs",
+  "engines" : {
+      "node" : ">=16.0.0"
+  },
   "bugs": {
     "url": "https://github.com/100pah/modify-package/issues"
   },

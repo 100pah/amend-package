@@ -4,9 +4,9 @@ module.exports = {
 
   amenderMap: {
 
-    'zrender': ({setPkgJSONAttr, ensureSubPkgJSON}) => {
-      setPkgJSONAttr('type', 'module');
-      setPkgJSONAttr('exports', {
+    'zrender': ({setPackageJSONAttr, ensureSubPackageJSON}) => {
+      setPackageJSONAttr('type', 'module');
+      setPackageJSONAttr('exports', {
         ".": {
             "types": "./index.d.ts",
             "require": "./dist/zrender.js",
@@ -17,13 +17,13 @@ module.exports = {
         "./*.json": "./*.json",
         "./*": "./*.js",
       });
-      ensureSubPkgJSON(['dist'], ({setPkgJSONAttr}) => setPkgJSONAttr('type', 'commonjs'));
-      ensureSubPkgJSON(['build'], ({setPkgJSONAttr}) => setPkgJSONAttr('type', 'commonjs'));
+      ensureSubPackageJSON(['dist'], ({setPackageJSONAttr}) => setPackageJSONAttr('type', 'commonjs'));
+      ensureSubPackageJSON(['build'], ({setPackageJSONAttr}) => setPackageJSONAttr('type', 'commonjs'));
     },
 
-    'echarts': ({setPkgJSONAttr, ensureSubPkgJSON}) => {
-      setPkgJSONAttr('type', 'module');
-      setPkgJSONAttr('exports', {
+    'echarts': ({setPackageJSONAttr, ensureSubPackageJSON}) => {
+      setPackageJSONAttr('type', 'module');
+      setPackageJSONAttr('exports', {
         ".": {
           "types": "./index.d.ts",
           "import": "./index.js",
@@ -62,10 +62,10 @@ module.exports = {
         "./*": "./*.js",
       });
 
-      ensureSubPkgJSON(['dist'], ({setPkgJSONAttr}) => setPkgJSONAttr('type', 'commonjs'));
-      ensureSubPkgJSON(['build'], ({setPkgJSONAttr}) => setPkgJSONAttr('type', 'commonjs'));
-      ensureSubPkgJSON(['i18n'], ({setPkgJSONAttr}) => setPkgJSONAttr('type', 'commonjs'));
-      ensureSubPkgJSON(['theme'], ({setPkgJSONAttr}) => setPkgJSONAttr('type', 'commonjs'));
+      ensureSubPackageJSON(['dist'], ({setPackageJSONAttr}) => setPackageJSONAttr('type', 'commonjs'));
+      ensureSubPackageJSON(['build'], ({setPackageJSONAttr}) => setPackageJSONAttr('type', 'commonjs'));
+      ensureSubPackageJSON(['i18n'], ({setPackageJSONAttr}) => setPackageJSONAttr('type', 'commonjs'));
+      ensureSubPackageJSON(['theme'], ({setPackageJSONAttr}) => setPackageJSONAttr('type', 'commonjs'));
     },
 
   },
