@@ -92,9 +92,24 @@ npx amend-package --config amend-package.config.cjs --revert --package some_pkg_
 ```js
 module.exports = {
   amenderMap: {
-    'some_package_1': ({setPkgJSONAttr, ensureSubPkgJSON}) => {
-      setPkgJSONAttr('type', 'module');
-      setPkgJSONAttr('exports', {
+
+    'some_package_1': ({
+      setPackageJSONAttr,
+      ensureSubPackageJSON,
+      getPackageJSONAttrClone,
+      getPackageVersion
+    }) => {
+      const currentVersion = getPackageVersion();
+      const expectedVersion = '5.1.2';
+      if (currentVersion !== expectedVersion) {
+        throw new Error(
+          'Please check the patch logic when upgrade "some_package_1".'
+          + ' currentVersion: ' + currentVersion
+          + ' expectedVersion: ' + expectedVersion
+        );
+      }
+      setPackageJSONAttr('type', 'module');
+      setPackageJSONAttr('exports', {
         ".": {
             "types": "./index.d.ts",
             "require": "./dist/zrender.js",
@@ -102,13 +117,20 @@ module.exports = {
         },
         "./*": "./*",
       });
-      ensureSubPkgJSON(['dist'], ({setPkgJSONAttr}) => setPkgJSONAttr('type', 'commonjs'));
-      ensureSubPkgJSON(['build'], ({setPkgJSONAttr}) => setPkgJSONAttr('type', 'commonjs'));
+      ensureSubPackageJSON(['dist'], ({setPackageJSONAttr}) => setPackageJSONAttr('type', 'commonjs'));
+      ensureSubPackageJSON(['build'], ({setPackageJSONAttr}) => setPackageJSONAttr('type', 'commonjs'));
     },
-    'some_package_2': ({setPkgJSONAttr, ensureSubPkgJSON}) => {
+
+    'some_package_2': ({
+      setPackageJSONAttr,
+      ensureSubPackageJSON,
+      getPackageJSONAttrClone,
+      getPackageVersion
+    }) => {
       // ...
     },
     // ...
+
   },
 };
 ```

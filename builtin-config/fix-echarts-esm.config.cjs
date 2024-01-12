@@ -4,7 +4,11 @@ module.exports = {
 
   amenderMap: {
 
-    'zrender': ({setPackageJSONAttr, ensureSubPackageJSON}) => {
+    'zrender': ({setPackageJSONAttr, ensureSubPackageJSON, getPackageJSONAttrClone}) => {
+      // Detect the package version that after exports added.
+      if (getPackageJSONAttrClone('exports')) {
+        return;
+      }
       setPackageJSONAttr('type', 'module');
       setPackageJSONAttr('exports', {
         ".": {
@@ -21,7 +25,11 @@ module.exports = {
       ensureSubPackageJSON(['build'], ({setPackageJSONAttr}) => setPackageJSONAttr('type', 'commonjs'));
     },
 
-    'echarts': ({setPackageJSONAttr, ensureSubPackageJSON}) => {
+    'echarts': ({setPackageJSONAttr, ensureSubPackageJSON, getPackageJSONAttrClone}) => {
+      // Detect the package version that after exports added.
+      if (getPackageJSONAttrClone('exports')) {
+        return;
+      }
       setPackageJSONAttr('type', 'module');
       setPackageJSONAttr('exports', {
         ".": {
