@@ -50,10 +50,11 @@ module.exports = {
       }
       setPackageJSONAttr('type', 'module');
       setPackageJSONAttr('exports', {
+
         ".": {
           "types": "./index.d.ts",
           "import": "./index.js",
-          "require": "./dist/echarts.js",
+          "require": "./dist/echarts.js"
         },
         "./core": "./core.js",
         "./core.js": "./core.js",
@@ -80,9 +81,6 @@ module.exports = {
           "import": "./ssr/client/index.js",
           "require": "./ssr/client/dist/index.js"
         },
-
-        // Entries below is only for backwork compatibility:
-
         "./extension/dataTool": "./extension/dataTool/index.js",
         "./extension/dataTool/index": "./extension/dataTool/index.js",
         "./extension/dataTool/index.js": "./extension/dataTool/index.js",
@@ -119,7 +117,6 @@ module.exports = {
         "./lib/chart/themeRiver": "./lib/chart/themeRiver.js",
         "./lib/chart/tree": "./lib/chart/tree.js",
         "./lib/chart/treemap": "./lib/chart/treemap.js",
-
         "./lib/component/aria": "./lib/component/aria.js",
         "./lib/component/axisPointer": "./lib/component/axisPointer.js",
         "./lib/component/brush": "./lib/component/brush.js",
@@ -151,8 +148,91 @@ module.exports = {
         "./lib/component/visualMap": "./lib/component/visualMap.js",
         "./lib/component/visualMapContinuous": "./lib/component/visualMapContinuous.js",
         "./lib/component/visualMapPiecewise": "./lib/component/visualMapPiecewise.js",
+        "./dist/echarts.common": "./dist/echarts.common.js",
+        "./dist/echarts.common.min": "./dist/echarts.common.min.js",
+        "./dist/echarts.esm": "./dist/echarts.esm.js",
+        "./dist/echarts.esm.min": "./dist/echarts.esm.min.js",
+        "./dist/echarts": "./dist/echarts.js",
+        "./dist/echarts.min": "./dist/echarts.min.js",
+        "./dist/echarts.simple": "./dist/echarts.simple.js",
+        "./dist/echarts.simple.min": "./dist/echarts.simple.min.js",
+        "./dist/extension/bmap": "./dist/extension/bmap.js",
+        "./dist/extension/bmap.min": "./dist/extension/bmap.min.js",
+        "./dist/extension/dataTool": "./dist/extension/dataTool.js",
+        "./dist/extension/dataTool.min": "./dist/extension/dataTool.min.js",
 
-        "./*": "./*",
+
+        // Compat that webpack v5.0.0 ~ v5.12.0 that support package.json "exports" but do
+        // not support wildcard in "exports".
+        // Since webpack v5.13.0 (Jan 12, 2021), it supports wildcard.
+        "./lib/chart/bar.js": "./lib/chart/bar.js",
+        "./lib/chart/boxplot.js": "./lib/chart/boxplot.js",
+        "./lib/chart/candlestick.js": "./lib/chart/candlestick.js",
+        "./lib/chart/custom.js": "./lib/chart/custom.js",
+        "./lib/chart/effectScatter.js": "./lib/chart/effectScatter.js",
+        "./lib/chart/funnel.js": "./lib/chart/funnel.js",
+        "./lib/chart/gauge.js": "./lib/chart/gauge.js",
+        "./lib/chart/graph.js": "./lib/chart/graph.js",
+        "./lib/chart/heatmap.js": "./lib/chart/heatmap.js",
+        "./lib/chart/line.js": "./lib/chart/line.js",
+        "./lib/chart/lines.js": "./lib/chart/lines.js",
+        "./lib/chart/map.js": "./lib/chart/map.js",
+        "./lib/chart/parallel.js": "./lib/chart/parallel.js",
+        "./lib/chart/pictorialBar.js": "./lib/chart/pictorialBar.js",
+        "./lib/chart/pie.js": "./lib/chart/pie.js",
+        "./lib/chart/radar.js": "./lib/chart/radar.js",
+        "./lib/chart/sankey.js": "./lib/chart/sankey.js",
+        "./lib/chart/scatter.js": "./lib/chart/scatter.js",
+        "./lib/chart/sunburst.js": "./lib/chart/sunburst.js",
+        "./lib/chart/themeRiver.js": "./lib/chart/themeRiver.js",
+        "./lib/chart/tree.js": "./lib/chart/tree.js",
+        "./lib/chart/treemap.js": "./lib/chart/treemap.js",
+        "./lib/component/aria.js": "./lib/component/aria.js",
+        "./lib/component/axisPointer.js": "./lib/component/axisPointer.js",
+        "./lib/component/brush.js": "./lib/component/brush.js",
+        "./lib/component/calendar.js": "./lib/component/calendar.js",
+        "./lib/component/dataZoom.js": "./lib/component/dataZoom.js",
+        "./lib/component/dataZoomInside.js": "./lib/component/dataZoomInside.js",
+        "./lib/component/dataZoomSelect.js": "./lib/component/dataZoomSelect.js",
+        "./lib/component/dataZoomSlider.js": "./lib/component/dataZoomSlider.js",
+        "./lib/component/dataset.js": "./lib/component/dataset.js",
+        "./lib/component/geo.js": "./lib/component/geo.js",
+        "./lib/component/graphic.js": "./lib/component/graphic.js",
+        "./lib/component/grid.js": "./lib/component/grid.js",
+        "./lib/component/gridSimple.js": "./lib/component/gridSimple.js",
+        "./lib/component/legend.js": "./lib/component/legend.js",
+        "./lib/component/legendPlain.js": "./lib/component/legendPlain.js",
+        "./lib/component/legendScroll.js": "./lib/component/legendScroll.js",
+        "./lib/component/markArea.js": "./lib/component/markArea.js",
+        "./lib/component/markLine.js": "./lib/component/markLine.js",
+        "./lib/component/markPoint.js": "./lib/component/markPoint.js",
+        "./lib/component/parallel.js": "./lib/component/parallel.js",
+        "./lib/component/polar.js": "./lib/component/polar.js",
+        "./lib/component/radar.js": "./lib/component/radar.js",
+        "./lib/component/singleAxis.js": "./lib/component/singleAxis.js",
+        "./lib/component/timeline.js": "./lib/component/timeline.js",
+        "./lib/component/title.js": "./lib/component/title.js",
+        "./lib/component/toolbox.js": "./lib/component/toolbox.js",
+        "./lib/component/tooltip.js": "./lib/component/tooltip.js",
+        "./lib/component/transform.js": "./lib/component/transform.js",
+        "./lib/component/visualMap.js": "./lib/component/visualMap.js",
+        "./lib/component/visualMapContinuous.js": "./lib/component/visualMapContinuous.js",
+        "./lib/component/visualMapPiecewise.js": "./lib/component/visualMapPiecewise.js",
+        "./dist/echarts.common.js": "./dist/echarts.common.js",
+        "./dist/echarts.common.min.js": "./dist/echarts.common.min.js",
+        "./dist/echarts.esm.js": "./dist/echarts.esm.js",
+        "./dist/echarts.esm.min.js": "./dist/echarts.esm.min.js",
+        "./dist/echarts.js": "./dist/echarts.js",
+        "./dist/echarts.min.js": "./dist/echarts.min.js",
+        "./dist/echarts.simple.js": "./dist/echarts.simple.js",
+        "./dist/echarts.simple.min.js": "./dist/echarts.simple.min.js",
+        "./dist/extension/bmap.js": "./dist/extension/bmap.js",
+        "./dist/extension/bmap.min.js": "./dist/extension/bmap.min.js",
+        "./dist/extension/dataTool.js": "./dist/extension/dataTool.js",
+        "./dist/extension/dataTool.min.js": "./dist/extension/dataTool.min.js",
+
+        "./*": "./*"
+
       });
 
       ensureSubPackageJSON(['dist'], ({setPackageJSONAttr}) => setPackageJSONAttr('type', 'commonjs'));
